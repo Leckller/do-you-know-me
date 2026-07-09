@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({super.key});
+  final Function changePage;
+
+  const Result({super.key, required this.changePage});
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Container(
+      child: Column(
+        children: [
+          Text("Sua pontuação foi:")
+        ],
+      ),
+    );
   }
 }
