@@ -4,12 +4,13 @@ import 'package:projeto_perguntas/pages/questionnaire.dart';
 
 class Start extends StatelessWidget {
   final Function changePage;
-
-  const Start({super.key, required this.changePage});
+  final List<num> userScore;
+  const Start({super.key, required this.changePage, required this.userScore});
 
   void onPressed(dynamic answer) {
     num index = answer['index']; 
     if (index == 0) {
+      userScore.clear();
       changePage('game');
     } else {
       SystemNavigator.pop();
