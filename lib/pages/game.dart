@@ -117,7 +117,7 @@ class GameState extends State<Game> {
       'question': 'Qual é o desenho favorito da nickelodeon?',
       'answers': [
         {'answer': 'Bob esponja', 'score': 0},
-        {'answer': 'phineas e ferb', 'score': 2},
+        {'answer': 'Phineas e ferb', 'score': 2},
         {'answer': 'The loud house', 'score': 1},
         {'answer': 'Padrinhos mágicos', 'score': 3},
       ],
@@ -167,6 +167,7 @@ class GameState extends State<Game> {
           question: currentQuestionData?['question'],
           answers: answers,
           onPressed: nextQuestion,
+          shuffle: true,
         ),
       ],
     );
