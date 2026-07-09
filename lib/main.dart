@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/pages/questionnaire.dart';
+import 'package:projeto_perguntas/pages/game.dart';
+import 'package:projeto_perguntas/pages/result.dart';
 import 'package:projeto_perguntas/pages/start.dart';
 
 void main() => runApp(ProjetoPerguntasApp());
 
 class ProjetoPerguntasAppState extends State<ProjetoPerguntasApp> {
+  late final Map<String, Widget> pages;
 
-  final Map<String, Widget> pages = {
-    'start': Start(),
-    'questionnaire': Questionnaire(),
-  };
+  late Widget currentPage;
 
-  Widget currentPage = Start();
+  List<num> userScore = [];
+
+  @override
+  void initState() {
+    super.initState();
+    pages = {
+      'start': Start(changePage: changePage, userScore: userScore),
+      'game': Game(changePage: changePage, userScore: userScore),
+      'result': Result(changePage: changePage, userScore: userScore),
+    };
+    currentPage = pages['start']!;
+  }
 
   void changePage(String page) {
     setState(() {
@@ -33,11 +43,7 @@ class ProjetoPerguntasAppState extends State<ProjetoPerguntasApp> {
             ),
           ),
         ),
-        body: Column(
-          children: [
-            Expanded(child: currentPage),
-          ],
-        ),
+        body: currentPage,
       ),
     );
   }
