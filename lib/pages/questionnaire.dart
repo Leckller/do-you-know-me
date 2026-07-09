@@ -4,16 +4,21 @@ class Questionnaire extends StatelessWidget {
   final String question;
   final List<dynamic> answers;
   final Function onPressed;
+  final bool shuffle;
 
   const Questionnaire({
     super.key,
     required this.question,
     required this.answers,
     required this.onPressed,
+    this.shuffle = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (shuffle) {
+      answers.shuffle();
+    }
     return Expanded(
       child: Container(
         width: double.infinity,
